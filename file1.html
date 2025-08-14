@@ -91,3 +91,123 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
 
 </body>
 </html>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Details</title>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .details-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        .label {
+            font-weight: bold;
+            color: #555;
+        }
+        .value {
+            color: #333;
+        }
+        .timestamp {
+            font-size: 12px;
+            color: #888;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .back-button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            border: none;
+            background: #6c757d;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .back-button:hover {
+            background: #5a6268;
+        }
+    </style>
+</head>
+<body>
+
+<div class="details-container">
+    <h2>Login Successful!</h2>
+    
+    <div class="info-row">
+        <span class="label">Email:</span>
+        <span class="value" id="userEmail">user@example.com</span>
+    </div>
+    
+    <div class="info-row">
+        <span class="label">Login Time:</span>
+        <span class="value" id="loginTime">Loading...</span>
+    </div>
+    
+    <div class="info-row">
+        <span class="label">Browser:</span>
+        <span class="value" id="browserInfo">Loading...</span>
+    </div>
+    
+    <div class="info-row">
+        <span class="label">IP Address:</span>
+        <span class="value" id="ipAddress">127.0.0.1</span>
+    </div>
+    
+    <div class="timestamp" id="timestamp">
+        Session started at: <span id="sessionStart">Loading...</span>
+    </div>
+    
+    <button class="back-button" onclick="window.location.href='file1.html'">Logout</button>
+</div>
+
+<script>
+// Get email from localStorage (set during login)
+const email = localStorage.getItem('userEmail') || 'user@example.com';
+document.getElementById('userEmail').textContent = email;
+
+// Set login time
+const now = new Date();
+document.getElementById('loginTime').textContent = now.toLocaleString();
+
+// Set session start time
+document.getElementById('sessionStart').textContent = now.toLocaleString();
+
+// Get browser info
+const browserInfo = navigator.userAgent;
+document.getElementById('browserInfo').textContent = browserInfo.substring(0, 50) + '...';
+
+// Clear email on logout
+function logout() {
+    localStorage.removeItem('userEmail');
+}
+</script>
+
+</body>
+</html>
